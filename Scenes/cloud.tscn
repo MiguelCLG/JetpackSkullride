@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvaqx8ll5y6fr"]
+
+[ext_resource type="Texture2D" uid="uid://vd010xp5fxr1" path="res://Images/WhiteCloud.svg" id="1_36nyi"]
+[ext_resource type="Script" path="res://Scripts/Background.cs" id="2_fvbnd"]
+
+[node name="Cloud" type="Sprite2D"]
+position = Vector2(1278, 201)
+scale = Vector2(0.268182, 0.268182)
+texture = ExtResource("1_36nyi")
+script = ExtResource("2_fvbnd")
+speed = 50.0

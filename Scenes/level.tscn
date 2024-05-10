@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvd1ju2fnbted"]
+
+[ext_resource type="Texture2D" uid="uid://1acumc7qlmom" path="res://Images/bg.png" id="1_p6ton"]
+[ext_resource type="PackedScene" uid="uid://dvaqx8ll5y6fr" path="res://Scenes/cloud.tscn" id="2_iw2gx"]
+[ext_resource type="Texture2D" uid="uid://cbm1ffbbe7q6y" path="res://Images/floor.png" id="2_lv3ba"]
+[ext_resource type="PackedScene" uid="uid://ci61ckjro70qp" path="res://Scenes/skull.tscn" id="3_bdvt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o31an"]
+size = Vector2(1916, 338)
+
+[node name="Level" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(589, 474)
+texture = ExtResource("1_p6ton")
+
+[node name="CloudContainer" type="Node2D" parent="."]
+
+[node name="Cloud" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(1308.33, 236)
+speed = 100.0
+
+[node name="Cloud2" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(1384.33, 227)
+scale = Vector2(0.168182, 0.168182)
+speed = 100.0
+
+[node name="Cloud3" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(1776.18, 120)
+speed = 100.0
+
+[node name="Cloud4" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(1678.85, 109)
+scale = Vector2(0.168182, 0.168182)
+speed = 100.0
+
+[node name="Cloud5" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(2107.65, 268)
+speed = 100.0
+
+[node name="Cloud6" parent="CloudContainer" instance=ExtResource("2_iw2gx")]
+position = Vector2(2166.33, 332)
+scale = Vector2(0.168182, 0.168182)
+speed = 100.0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(590, 756)
+collision_layer = 5
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_o31an")
+
+[node name="FloorSprite" type="Sprite2D" parent="Floor"]
+position = Vector2(1, 0)
+texture = ExtResource("2_lv3ba")
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2(595, -136)
+collision_layer = 5
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+shape = SubResource("RectangleShape2D_o31an")
+
+[node name="FloorSprite" type="Sprite2D" parent="Floor2"]
+position = Vector2(1, 0)
+texture = ExtResource("2_lv3ba")
+
+[node name="Skull" parent="." instance=ExtResource("3_bdvt1")]
+position = Vector2(363, 481)

@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://ci61ckjro70qp"]
+
+[ext_resource type="Script" path="res://Scripts/Skull.cs" id="1_i51dd"]
+[ext_resource type="Texture2D" uid="uid://cu3p62q70b3xc" path="res://Images/skull.png" id="1_yijcw"]
+
+[sub_resource type="Gradient" id="Gradient_pcw13"]
+offsets = PackedFloat32Array(0, 0.243028, 0.593625)
+colors = PackedColorArray(0.271605, 0.271605, 0.271605, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4f088"]
+gradient = SubResource("Gradient_pcw13")
+
+[sub_resource type="Curve" id="Curve_42xcj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xine8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_l7nbe"]
+curve_x = SubResource("Curve_42xcj")
+curve_y = SubResource("Curve_xine8")
+
+[sub_resource type="Curve" id="Curve_7vq8j"]
+_data = [Vector2(0.121864, 0), 0.0, 0.0, 0, 0, Vector2(0.648745, 0.63836), 2.93968, 2.93968, 0, 0, Vector2(0.949821, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_naufy"]
+curve = SubResource("Curve_7vq8j")
+
+[sub_resource type="Curve" id="Curve_hvufr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.985663, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_h7ppm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_36074"]
+_data = [Vector2(0.992832, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bpme6"]
+curve_x = SubResource("Curve_hvufr")
+curve_y = SubResource("Curve_h7ppm")
+curve_z = SubResource("Curve_36074")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q4nko"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector3(-1000, 1000, 0)
+spread = 10.0
+flatness = 1.0
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+directional_velocity_min = -50.0
+directional_velocity_max = 6.0
+directional_velocity_curve = SubResource("CurveXYZTexture_l7nbe")
+gravity = Vector3(-100, 100, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = -38.56
+radial_accel_max = -24.18
+damping_min = 40.0
+damping_max = 40.0
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveXYZTexture_bpme6")
+color = Color(0.941176, 0.941176, 0.941176, 1)
+color_ramp = SubResource("GradientTexture1D_4f088")
+emission_curve = SubResource("CurveTexture_naufy")
+turbulence_noise_strength = 0.0
+
+[node name="Skull" type="RigidBody2D"]
+lock_rotation = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_i51dd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(14.7063, 12.5938)
+scale = Vector2(1.40625, 1.40625)
+polygon = PackedVector2Array(12.2978, 21.6222, 18.6978, 20.2, 18.6978, 13.0889, 21, -6, 15, -12, 4.47555, -15.3556, -15.4356, -15.3556, -22, -11, -23, -4, -17, 2, -9.74667, 8.11111, -5.48, 10.2444, 0.208885, 13.8)
+
+[node name="JetpackParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(18, 3)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_q4nko")
+lifetime = 0.1
+speed_scale = 2.0
+trail_enabled = true
+trail_lifetime = 1.0
+
+[node name="SkullSprite" type="Sprite2D" parent="."]
+position = Vector2(12.2, 12.2)
+scale = Vector2(0.147656, 0.147656)
+texture = ExtResource("1_yijcw")
