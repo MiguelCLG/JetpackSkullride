@@ -12,9 +12,9 @@ speed = 150.0
 rotation = 3.14159
 texture = ExtResource("1_p5icn")
 
-[node name="Area2D" type="Area2D" parent="Spike"]
+[node name="Area2D" type="Area2D" parent="Spike" groups=["Hazard"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike/Area2D"]
 polygon = PackedVector2Array(63, 63, 0, -63, -63, 63)
-
-[connection signal="body_entered" from="Spike/Area2D" to="." method="OnCollisionEnter"]

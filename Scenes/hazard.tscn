@@ -16,7 +16,9 @@ self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
 texture = ExtResource("1_6gci3")
 script = ExtResource("4_rs823")
 
-[node name="Area2D" type="Area2D" parent="Hazard-holder"]
+[node name="Area2D" type="StaticBody2D" parent="Hazard-holder" groups=["Hazard"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazard-holder/Area2D"]
 polygon = PackedVector2Array(59, 40, 69, 99, 143, 131, 205, 83, 197, -1, 124, -34, 72, 5, -71, -45, -76, -105, -148, -137, -217, -85, -204, -5, -132, 26, -80, -10)
@@ -107,5 +109,3 @@ modulate = Color(0.454902, 0.454902, 0.454902, 1)
 position = Vector2(-44, 35)
 texture = ExtResource("3_65jji")
 script = ExtResource("4_rs823")
-
-[connection signal="body_entered" from="Hazard-holder/Area2D" to="." method="OnCollisionEnter"]

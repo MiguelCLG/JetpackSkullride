@@ -20,16 +20,4 @@ public partial class Hazard : Node2D
         }
         GlobalPosition -= new Vector2((float)delta * speed, 0);
     }
-
-    public void OnCollisionEnter(Node2D Body)
-    {
-        if(Body is Skull skull)
-        {
-            var impulseDirection = skull.Position - Position;
-            if (skull is RigidBody2D rb)
-                rb.SetDeferred("lock_rotation", false);
-            skull.ApplyImpulse(impulseDirection * 5f);
-            skull.CollidedWithHazard();
-        }
-    }
 }

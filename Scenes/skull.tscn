@@ -96,5 +96,7 @@ trail_lifetime = 1.0
 
 [node name="SkullSprite" type="Sprite2D" parent="."]
 position = Vector2(12.2, 12.2)
-scale = Vector2(0.147656, 0.147656)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_yijcw")
+
+[connection signal="body_entered" from="." to="." method="OnCollisionEnter"]

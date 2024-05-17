@@ -55,4 +55,15 @@ public partial class Skull : RigidBody2D
         pewpewInstance.Rotation = new Random().Next((int)Mathf.DegToRad(-45), (int)Mathf.DegToRad(45));
         AddChild(pewpewInstance);
     }
+
+    public void OnCollisionEnter(Node Body)
+    {
+        if (Body.IsInGroup("Hazard") && Body is Node2D node)
+        {
+            var impulseDirection = node.Position - Position;
+            SetDeferred("lock_rotation", false);
+            ApplyImpulse(impulseDirection * 5f);
+            CollidedWithHazard();
+        }
+    }
 }
