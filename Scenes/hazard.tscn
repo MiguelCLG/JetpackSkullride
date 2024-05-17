@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://b268btaqnttqp"]
+
+[ext_resource type="Texture2D" uid="uid://crvuhixjte33b" path="res://Images/hazard/hazard-holder.svg" id="1_6gci3"]
+[ext_resource type="Script" path="res://Scripts/Hazard.cs" id="1_b07f6"]
+[ext_resource type="Texture2D" uid="uid://bwpsjgxw30t6u" path="res://Images/hazard/hazard-blade-holder.svg" id="2_idfhn"]
+[ext_resource type="Texture2D" uid="uid://bpke66j16qm3a" path="res://Images/hazard/hazard-blade.svg" id="3_65jji"]
+[ext_resource type="Script" path="res://Scripts/RotationClockwise.cs" id="3_c4m6y"]
+[ext_resource type="Script" path="res://Scripts/RotationCounterClockwise.cs" id="4_rs823"]
+
+[node name="Hazard" type="Node2D"]
+script = ExtResource("1_b07f6")
+speed = 150.0
+
+[node name="Hazard-holder" type="Sprite2D" parent="."]
+self_modulate = Color(0.815686, 0.815686, 0.815686, 1)
+texture = ExtResource("1_6gci3")
+script = ExtResource("4_rs823")
+
+[node name="Area2D" type="Area2D" parent="Hazard-holder"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hazard-holder/Area2D"]
+polygon = PackedVector2Array(59, 40, 69, 99, 143, 131, 205, 83, 197, -1, 124, -34, 72, 5, -71, -45, -76, -105, -148, -137, -217, -85, -204, -5, -132, 26, -80, -10)
+
+[node name="Hazard-blade-holder" type="Sprite2D" parent="Hazard-holder"]
+self_modulate = Color(0.184314, 0.184314, 0.184314, 1)
+position = Vector2(-141, -54)
+texture = ExtResource("2_idfhn")
+script = ExtResource("3_c4m6y")
+speed = 50.0
+
+[node name="Hazard-blade" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(-54, -22)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade2" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(-5, -59)
+rotation = 0.0504602
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade3" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(46, -35)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade4" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(51, 25)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade5" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(8, 58)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade6" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder"]
+modulate = Color(0.454524, 0.454524, 0.454524, 1)
+position = Vector2(-44, 35)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade-holder2" type="Sprite2D" parent="Hazard-holder"]
+self_modulate = Color(0.18359, 0.18359, 0.18359, 1)
+position = Vector2(132, 49)
+texture = ExtResource("2_idfhn")
+script = ExtResource("3_c4m6y")
+
+[node name="Hazard-blade" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(-54, -22)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade2" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(-5, -59)
+rotation = 0.0504602
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade3" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(46, -35)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade4" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(51, 25)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade5" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(8, 58)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[node name="Hazard-blade6" type="Sprite2D" parent="Hazard-holder/Hazard-blade-holder2"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+position = Vector2(-44, 35)
+texture = ExtResource("3_65jji")
+script = ExtResource("4_rs823")
+
+[connection signal="body_entered" from="Hazard-holder/Area2D" to="." method="OnCollisionEnter"]

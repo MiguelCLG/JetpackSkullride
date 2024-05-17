@@ -5,7 +5,7 @@ public partial class Background : Sprite2D
 {
 
     Vector2 initialPosition;
-    [Export] float speed = 10f;
+    [Export] float speed = 100f;
     public override void _Ready()
     {
         initialPosition = GlobalPosition;
@@ -14,7 +14,7 @@ public partial class Background : Sprite2D
     }
     public override void _Process(double delta)
     {
-        if (GlobalPosition.X < -100)
+        if (GlobalPosition.X < -200)
         { 
             GlobalPosition = initialPosition;
             SetCloudColor();

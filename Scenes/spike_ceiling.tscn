@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://csg0cwwpd6cnj"]
+
+[ext_resource type="Texture2D" uid="uid://c04wvjdlqe6hb" path="res://Images/spike.png" id="1_p5icn"]
+[ext_resource type="Script" path="res://Scripts/Hazard.cs" id="2_fragg"]
+
+[node name="HazardSpikeCeiling" type="Node2D"]
+script = ExtResource("2_fragg")
+type = 2
+speed = 150.0
+
+[node name="Spike" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_p5icn")
+
+[node name="Area2D" type="Area2D" parent="Spike"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike/Area2D"]
+polygon = PackedVector2Array(63, 63, 0, -63, -63, 63)
+
+[connection signal="body_entered" from="Spike/Area2D" to="." method="OnCollisionEnter"]

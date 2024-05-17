@@ -8,13 +8,20 @@ public partial class Skull : RigidBody2D
 
     PackedScene pewpews = GD.Load<PackedScene>("res://Scenes/pewpew.tscn");
 
+    bool IsDead { get; set; } = false;
     public override void _Ready()
     {
         jetpackParticles = GetNode<GpuParticles2D>("%JetpackParticles");
         skull = GetNode<Sprite2D>("SkullSprite");
     }
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
+        if(IsDead)
+        {
+            if (Input.IsActionPressed("ui_accept"))
+                GetTree().CallDeferred("reload_current_scene");
+            return; 
+        }
         if (Input.IsActionPressed("jump"))
         {
             LinearVelocity = Vector2.Zero;
@@ -27,9 +34,20 @@ public partial class Skull : RigidBody2D
         {
             jetpackParticles.Emitting = false;
             skull.GlobalRotation = 0;
+            ApplyImpulse(new Vector2(0, 1));
         }
     }
 
+    public void CollidedWithHazard()
+    {
+        IsDead = true;
+        Utils.TimerUtils.CreateTimer(RestartGame, this, 3f);
+    }
+
+    private void RestartGame()
+    {
+        GetTree().CallDeferred("reload_current_scene");
+    }
     public void SpawnPewPews()
     {
         var pewpewInstance = pewpews.Instantiate<PewPew>();

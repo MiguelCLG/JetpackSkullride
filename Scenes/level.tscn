@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvd1ju2fnbted"]
+[gd_scene load_steps=10 format=3 uid="uid://dvd1ju2fnbted"]
 
 [ext_resource type="Texture2D" uid="uid://1acumc7qlmom" path="res://Images/bg.png" id="1_p6ton"]
 [ext_resource type="PackedScene" uid="uid://dvaqx8ll5y6fr" path="res://Scenes/cloud.tscn" id="2_iw2gx"]
 [ext_resource type="Texture2D" uid="uid://cbm1ffbbe7q6y" path="res://Images/floor.png" id="2_lv3ba"]
 [ext_resource type="PackedScene" uid="uid://ci61ckjro70qp" path="res://Scenes/skull.tscn" id="3_bdvt1"]
+[ext_resource type="PackedScene" uid="uid://b268btaqnttqp" path="res://Scenes/hazard.tscn" id="5_lmm65"]
+[ext_resource type="Script" path="res://Scripts/HazardSpawner.cs" id="6_d8wvb"]
+[ext_resource type="PackedScene" uid="uid://dtrya6pbjqa4n" path="res://Scenes/spike.tscn" id="7_h21n5"]
+[ext_resource type="PackedScene" uid="uid://csg0cwwpd6cnj" path="res://Scenes/spike_ceiling.tscn" id="8_ftl17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o31an"]
-size = Vector2(1916, 338)
+size = Vector2(1916, 323)
 
 [node name="Level" type="Node2D"]
 
@@ -48,24 +52,30 @@ position = Vector2(590, 756)
 collision_layer = 5
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_o31an")
-
 [node name="FloorSprite" type="Sprite2D" parent="Floor"]
 position = Vector2(1, 0)
 texture = ExtResource("2_lv3ba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_o31an")
 
 [node name="Floor2" type="StaticBody2D" parent="."]
 position = Vector2(595, -136)
 collision_layer = 5
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
-shape = SubResource("RectangleShape2D_o31an")
-
 [node name="FloorSprite" type="Sprite2D" parent="Floor2"]
 position = Vector2(1, 0)
 texture = ExtResource("2_lv3ba")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+position = Vector2(2, 7)
+shape = SubResource("RectangleShape2D_o31an")
+
 [node name="Skull" parent="." instance=ExtResource("3_bdvt1")]
 position = Vector2(363, 481)
+
+[node name="HazardSpawner" type="Node2D" parent="."]
+script = ExtResource("6_d8wvb")
+hazards = Array[PackedScene]([ExtResource("5_lmm65"), ExtResource("7_h21n5"), ExtResource("8_ftl17")])
