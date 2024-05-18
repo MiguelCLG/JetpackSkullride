@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o31an"]
 size = Vector2(1916, 323)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["CanBePaused", "Persist"]]
 script = ExtResource("1_ih02t")
 
 [node name="Bg" type="Sprite2D" parent="."]
@@ -76,10 +76,10 @@ texture = ExtResource("2_lv3ba")
 position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_o31an")
 
-[node name="Skull" parent="." instance=ExtResource("3_bdvt1")]
+[node name="Skull" parent="." groups=["CanBePaused"] instance=ExtResource("3_bdvt1")]
 position = Vector2(363, 481)
 
-[node name="HazardSpawner" type="Node2D" parent="."]
+[node name="HazardSpawner" type="Node2D" parent="." groups=["CanBePaused"]]
 script = ExtResource("6_d8wvb")
 hazards = Array[PackedScene]([ExtResource("5_lmm65"), ExtResource("7_h21n5"), ExtResource("8_ftl17")])
 
@@ -90,17 +90,35 @@ hazards = Array[PackedScene]([ExtResource("5_lmm65"), ExtResource("7_h21n5"), Ex
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 2.0
-offset_top = 34.0
+offset_top = 83.0
 offset_right = 199.0
-offset_bottom = 57.0
+offset_bottom = 106.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Score: 0"
 
 [node name="MetersLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 2.0
-offset_top = 62.0
+offset_top = 111.0
 offset_right = 199.0
-offset_bottom = 85.0
+offset_bottom = 134.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Meters: 0m"
+
+[node name="HighScoreMetersLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 2.0
+offset_top = 36.0
+offset_right = 203.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Most Meters Reached: 0m"
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 2.0
+offset_top = 59.0
+offset_right = 199.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "High Score: 0"

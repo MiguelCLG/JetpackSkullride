@@ -23,7 +23,6 @@ public partial class HazardSpawner : Node2D
     public override void _Ready()
     {
         ScreenTransform = DisplayServer.WindowGetSize();
-        GD.Print(ScreenTransform);
     }
     public override void _Process(double delta)
     {

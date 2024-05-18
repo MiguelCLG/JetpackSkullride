@@ -30,7 +30,6 @@ public partial class Enemy : RigidBody2D
         {
             GetParent().CallDeferred("remove_child", this);
             Dispose();            
-            GD.Print("Enemy hit");
             EventRegistry.GetEventPublisher("OnEnemyHitWithPewPew").RaiseEvent(this);
         }
         

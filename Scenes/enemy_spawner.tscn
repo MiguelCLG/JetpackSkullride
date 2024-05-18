@@ -3,6 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_22p24"]
 [ext_resource type="PackedScene" uid="uid://dgmxrb10m0bjb" path="res://Scenes/enemy.tscn" id="2_2qlw3"]
 
-[node name="EnemySpawner" type="Node2D"]
+[node name="EnemySpawner" type="Node2D" groups=["CanBePaused"]]
 script = ExtResource("1_22p24")
 enemyScene = ExtResource("2_2qlw3")

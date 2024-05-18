@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c04wvjdlqe6hb" path="res://Images/spike.png" id="1_xkobx"]
 [ext_resource type="Script" path="res://Scripts/Hazard.cs" id="2_w1rkm"]
 
-[node name="HazardSpike" type="Node2D"]
+[node name="HazardSpike" type="Node2D" groups=["CanBePaused"]]
 script = ExtResource("2_w1rkm")
 type = 1
 speed = 150.0
@@ -11,9 +11,9 @@ speed = 150.0
 [node name="Spike" type="Sprite2D" parent="."]
 texture = ExtResource("1_xkobx")
 
-[node name="Area2D" type="StaticBody2D" parent="Spike" groups=["Hazard"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="Spike" groups=["Hazard"]]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike/StaticBody2D"]
 polygon = PackedVector2Array(63, 63, 0, -63, -63, 63)

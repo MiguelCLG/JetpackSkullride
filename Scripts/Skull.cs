@@ -41,13 +41,18 @@ public partial class Skull : RigidBody2D
     public void CollidedWithHazard()
     {
         IsDead = true;
-        Utils.TimerUtils.CreateTimer(RestartGame, this, 3f);
+        var pauseNodes = GetTree().GetNodesInGroup("CanBePaused");
+
+        foreach (var node in pauseNodes)
+        {
+            node.SetProcess(false);
+            node.SetPhysicsProcess(false);
+        }
+        Action action = () => EventRegistry.GetEventPublisher("OnPlayerDie").RaiseEvent(this);
+        Utils.TimerUtils.CreateTimer(action, this, 3f);
     }
 
-    private void RestartGame()
-    {
-        GetTree().CallDeferred("reload_current_scene");
-    }
+    
     public void SpawnPewPews()
     {
         var pewpewInstance = pewpews.Instantiate<PewPew>();
